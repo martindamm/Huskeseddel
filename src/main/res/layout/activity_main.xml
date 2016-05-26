@@ -22,10 +22,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-<<<<<<< HEAD
-    <include layout="@layout/main_layout"/>
-=======
     <include layout="@layout/content_main"/>
->>>>>>> 5d229cb0267c0afbc2ecb934bd6428ba6d00b499
 
 </android.support.design.widget.CoordinatorLayout>

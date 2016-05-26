@@ -2,14 +2,18 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="org.projects.shoppinglist.MainActivity">
+<<<<<<< HEAD
 
 
     <!--android:onClick="setPreferences"-->
+=======
+>>>>>>> 5d229cb0267c0afbc2ecb934bd6428ba6d00b499
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
+<<<<<<< HEAD
 
     <item
         android:id="@+id/item_about"
@@ -29,3 +33,6 @@
         android:orderInCategory="1"
         android:title="@string/clear"/>
     </menu>
+=======
+</menu>
+>>>>>>> 5d229cb0267c0afbc2ecb934bd6428ba6d00b499

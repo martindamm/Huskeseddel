@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="colorPrimary">#78d2fd</color>
     <color name="colorPrimaryDark">#454564</color>
     <color name="colorAccent">#48633c</color>
@@ -7,4 +8,9 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#B6B6B6</color>
 
+=======
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+>>>>>>> 5d229cb0267c0afbc2ecb934bd6428ba6d00b499
 </resources>
