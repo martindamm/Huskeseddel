@@ -1,14 +1,6 @@
 [
     {
-        "merged": "C:\\Users\\Kristoffer Kryger\\AndroidStudioProjects\\Mobil-Mandatory\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\Kristoffer Kryger\\AndroidStudioProjects\\Mobil-Mandatory\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\studie\\androidprojects\\kopifragit\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\studie\\androidprojects\\kopifragit\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "D:\\studie\\androidprojects\\Huskelistefinal\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
-        "source": "D:\\studie\\androidprojects\\Huskelistefinal\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "/Users/martindamm/Desktop/Skole/PBAWEB 2 semester/Mobile/Øvelser/Mandatory/Huskeseddel/app/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
+        "source": "/Users/martindamm/Desktop/Skole/PBAWEB 2 semester/Mobile/Øvelser/Mandatory/Huskeseddel/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     }
 ]

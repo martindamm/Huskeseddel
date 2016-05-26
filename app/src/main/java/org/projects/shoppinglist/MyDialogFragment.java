@@ -5,26 +5,23 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-/**
- * Created by Kristoffer on 05-05-2016.
- */
 public class MyDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        //Kommer dialogbuilder
+        // Håndtering af kode til sletning af hele listen.
         AlertDialog.Builder alert = new AlertDialog.Builder(
                 getActivity());
         alert.setTitle("Slet listen");
         alert.setMessage("Vil du slette hele listen?");
-        alert.setPositiveButton("Yup", pListener);
-        alert.setNegativeButton("Hov, nej!", nListener);
+        alert.setPositiveButton("Ja", pListener);
+        alert.setNegativeButton("Nej", nListener);
 
         return alert.create();
     }
 
-// Her kommer "ja" button
+    // Ja knappen
     DialogInterface.OnClickListener pListener = new DialogInterface.OnClickListener() {
 
         @Override
@@ -33,7 +30,7 @@ public class MyDialogFragment extends DialogFragment {
         }
     };
 
-// Her kommer "nej" button
+    // Nej knap
     DialogInterface.OnClickListener nListener = new DialogInterface.OnClickListener() {
 
         @Override

@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
-/**
- * Created by Kristoffer on 05-05-2016.
- */
 
 public class SettingsActivity extends PreferenceActivity {
 

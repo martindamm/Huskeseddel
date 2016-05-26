@@ -31,7 +31,6 @@ import android.support.v7.widget.ShareActionProvider;
 public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Product> adapter;
     ListView listView;
-    //ArrayList<Product> bag = new ArrayList<Product>();
     Product lastDeletedProduct;
     int lastDeletedPosition;
     Firebase mRef;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
-    // Her kommer Firebase Adapter
+    // Firebase Adapter.
 
     FirebaseListAdapter<Product> fireAdapter;
     public FirebaseListAdapter getMyAdapter() {
@@ -58,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mRef = new Firebase("https://glaring-torch-1875.firebaseio.com/item/");
-        m2Ref = new Firebase("https://glaring-torch-1875.firebaseio.com/item/");
+        mRef = new Firebase("https://huskeliste-8a3f7.firebaseio.com");
+        m2Ref = new Firebase("https://huskeliste-8a3f7.firebaseio.com");
 
         listView = (ListView) findViewById(R.id.list);
          fireAdapter =
@@ -69,17 +68,18 @@ public class MainActivity extends AppCompatActivity {
                         android.R.layout.simple_list_item_checked,
                         mRef
                 ) {
-                @Override
-                protected void populateView(View view, Product product, int i) {
-                TextView textView = (TextView) view.findViewById(android.R.id.text1);
-                textView.setText(product.toString());
-                }
+                    @Override
+                    protected void populateView(View view, Product product, int i) {
+                    TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                    textView.setText(product.toString());
+                    }
                 };
         listView.setAdapter(fireAdapter);
+        // CHOICE_MODE_SINGLE = kun et valg
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        // Her kommer spinner
-
+        // Spinners gør det muligt at vælge en værdi ud fra et sæt af værdier.
+        // Den henter data fra howmanyarray via ArrayAdapter.createFromResource
         final Spinner howmanyspinner= (Spinner) findViewById(R.id.howmanyspinner);
         ArrayAdapter<CharSequence> adp3=ArrayAdapter.createFromResource(this,
                 R.array.howmanyarray, android.R.layout.simple_list_item_1);
@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 String ss = howmanyspinner.getSelectedItem().toString();
                 Toast.makeText(getBaseContext(), ss, Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
@@ -101,13 +100,15 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
             }
-
         });
 
-        // Her kommer addButton
+        // addButton
         Button addButton = (Button) findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
+            // Følgende kode tager værdien af input feltet (EditText), samt
+            // antallet og tilføjer den til Firebase --> mRef.push().setValue(p);
             public void onClick(View v) {
                 EditText itemTxt = (EditText) findViewById(R.id.itemInput);
                 String ss=howmanyspinner.getSelectedItem().toString();
@@ -116,12 +117,18 @@ public class MainActivity extends AppCompatActivity {
                 mRef.push().setValue(p);
                 itemTxt.setText("");
                 howmanyspinner.setSelection(0);
+
+                // Når data bliver tilføjet ændres info, og derfor
+                // bliver vi nødt til at genindlæse ændringerne med
+                // nedenstående linje:
                 getMyAdapter().notifyDataSetChanged();
             }
         });
 
 
-// Her kommer deletebutton tilhørende snackbar
+        // deleteButton som tilhører snackbar.
+        // Snackbar giver lidt feedback til en operation. Beskeden bliver vist nederst
+        // på skærmen.
 
         Button deleteButton = (Button) findViewById(R.id.deleteButton);
         final View parent = findViewById(R.id.layout);
@@ -138,14 +145,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Slet ikke", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //Her kommer fortrydelse af slettet bag.add(lastDeletedPosition,lastDeletedProduct);
                                 mRef.push().setValue(lastDeletedProduct);
                                 getMyAdapter().notifyDataSetChanged();
-                                Snackbar snackbar = Snackbar.make(parent, lastDeletedProduct+" er på listen igen", Snackbar.LENGTH_SHORT);
+                                Snackbar snackbar = Snackbar.make(parent, lastDeletedProduct+" er tilbage på listen igen",
+                                        Snackbar.LENGTH_SHORT);
                                 snackbar.show();
                             }
                         });
-
                 snackbar.show();
             }
         });
@@ -157,7 +163,8 @@ public class MainActivity extends AppCompatActivity {
         Colorout();
     }
 
-    //Her kommer kopi bliver gemt til snackbarens fortrydelse
+    // Slettet værdi tilføjes til lastDeletedProduct. Hvis der fortrydes hentes
+    // værdien tilbage derfra.
     public Product getItem(int index)
     {
         return (Product) getMyAdapter().getItem(index);
@@ -165,12 +172,13 @@ public class MainActivity extends AppCompatActivity {
     public void saveCopy()
     {
         lastDeletedPosition = listView.getCheckedItemPosition();
-        //lastDeletedProduct= getMyAdapter().getRef(lastDeletedPosition);
         lastDeletedProduct= getItem(lastDeletedPosition);
 
     }
 
-    // Her kommer teksten til share
+    // 'Del' funktionen. Konverterer listen til en string
+    // og kører et for-loop hvor den for hver forekomst
+    // fra Firebase returnerer item og kvantitet.
     public String convertListToString()
     {
         String result = "";
@@ -179,13 +187,12 @@ public class MainActivity extends AppCompatActivity {
             Product p = (Product) fireAdapter.getItem(i);
             String sp =p.toString();
             result += p.getQuantity()+" "+p.getName() + "\n";
-             Log.d("her er listen", sp);
+             Log.d("her er din liste", sp);
         }
         return result;
     }
 
-// Her kommer Menu
-
+    // Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -194,26 +201,22 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        // Her kommer instillinger
-            case R.id.action_settings:
+                case R.id.action_settings:
                 Toast.makeText(this, "Instillinger", Toast.LENGTH_SHORT)
-                        .show();
+                    .show();
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivityForResult(intent, 1);
 
                 return true;
-        // Her kommer Info
+            // Info popup
             case R.id.item_about:
-                Toast.makeText(this, "Mandatory Mobil, \nKristoffer Kryger", Toast.LENGTH_SHORT)
-                        .show();
+                Toast.makeText(this, "Mobile Mandatory, \nDaniel Buus & Martin Damm", Toast.LENGTH_LONG)
+                    .show();
                 return true;
 
-
-            // Her kommer Share List
-
+            // Share
             case R.id.share:
             int id = item.getItemId();
-            // Her kommer koden som håndtere sharing
             if (id==R.id.share)
             {
                 Intent intentshare = new Intent(Intent.ACTION_SEND);
@@ -226,13 +229,14 @@ public class MainActivity extends AppCompatActivity {
                 intentshare.putExtra(android.content.Intent.EXTRA_SUBJECT, "HuskeSeddel");
                 startActivity(intentshare);
             }
-                return true;
+            return true;
 
 
-        // Her kommer slette funktionen/clear list
+            // Clear items from list.
             case R.id.item_clear:
                 //public void showDialog(View v) {
 
+                // DialogFragment bruges til at vise en dialog ovenpå en aktivitet.
                 MyDialogFragment dialog = new MyDialogFragment() {
                     @Override
                     protected void positiveClick() {
@@ -300,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
 
-        //Her kommer baggrundsindstillingerne
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -311,26 +315,28 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    // Baggrundsindstillinger
+    // if(theme.equals("White") skal matche theme_values i strings.xml for at virke.
     public void Colorout (){
         SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
         String name = prefs.getString("name", "");
         Toast.makeText(
                 this,
-                name + "Baggrundsfarven er nu "+  theme, Toast.LENGTH_SHORT).show();
+                name + "Baggrundsfarven er "+  theme+ " nu", Toast.LENGTH_SHORT).show();
         LinearLayout ln = (LinearLayout) this.findViewById(R.id.layout);
         ln.setBackgroundColor(Color.rgb(255, 255, 255));
-        if(theme.equals("Hvid")){
+        if(theme.equals("White")){
             ln.setBackgroundColor(Color.rgb(255,255,255));
         }
-        else if(theme.equals("Grå")){
-            ln.setBackgroundColor(Color.rgb(87,87,86));
+        else if(theme.equals("Bisque")){
+            ln.setBackgroundColor(Color.rgb(205,183,158));
         }
-        else if(theme.equals("Gul")){
-            ln.setBackgroundColor(Color.rgb(233,249,12));
+        else if(theme.equals("Dark Orange")){
+            ln.setBackgroundColor(Color.rgb(255,140,0));
         }
-        else if(theme.equals("Blå")){
-            ln.setBackgroundColor(Color.rgb(105,183,252));
+        else if(theme.equals("Steel Blue")){
+            ln.setBackgroundColor(Color.rgb(70,130,180));
         }
 
     }
@@ -338,7 +344,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivityForResult(intent, 1);
     }
-
 
     public void getPreferences(View v) {
         SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
@@ -351,6 +356,4 @@ public class MainActivity extends AppCompatActivity {
                 "Email: " + email + "\nTheme: " + theme + "\nSound Enabled: "
                         + soundEnabled, Toast.LENGTH_SHORT).show();
     }
-
-
 }

@@ -13,16 +13,16 @@
         <item>10</item>
     </string-array>
     <string-array name="themes_type">
-        <item>Hvid</item>
-        <item>Grå</item>
-        <item>Gul</item>
-        <item>Blå</item>
+        <item>White</item>
+        <item>Bisque</item>
+        <item>Dark Orange</item>
+        <item>Steel Blue</item>
     </string-array>
     <string-array name="themes_values">
-        <item>Hvid</item>
-        <item>Grå</item>
-        <item>Gul</item>
-        <item>Blå</item>
+        <item>White</item>
+        <item>Bisque</item>
+        <item>Dark Orange</item>
+        <item>Steel Blue</item>
     </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -54,11 +54,11 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <color name="colorAccent">#00ffff</color>
+    <color name="colorAccent">#48633c</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorIcons">#FFFFFF</color>
-    <color name="colorPrimary">#607D8B</color>
-    <color name="colorPrimaryDark">#455A64</color>
+    <color name="colorPrimary">#78d2fd</color>
+    <color name="colorPrimaryDark">#454564</color>
     <color name="colorPrimaryLight">#ff0000</color>
     <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_signin_btn_dark_text_default">@android:color/white</color>
@@ -320,8 +320,8 @@
     <string name="about">Info</string>
     <string name="action_settings">Indstillinger</string>
     <string name="add">+</string>
-    <string name="addbuttontxt">Tilføj</string>
-    <string name="app_name">Huskeliste</string>
+    <string name="addbuttontext">Tilføj</string>
+    <string name="app_name">Huskeseddel</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
@@ -359,14 +359,14 @@
     <string name="common_google_play_services_updating_title">Google Play services are updating</string>
     <string name="common_open_on_phone">Open on phone</string>
     <string name="deletebutton">x</string>
-    <string name="deletebuttxt">Slet</string>
+    <string name="deletebuttontext">Slet</string>
     <string name="firebaseUrl"/>
     <string name="gcm_defaultSenderId" translatable="false"/>
     <string name="hinttext">Skriv her</string>
     <string name="setpref">Indstillinger</string>
-    <string name="skrivher">Tilføj vare</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="textinput">Tilføj vare</string>
+    <string name="tilføjemne">Tilføj emne</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

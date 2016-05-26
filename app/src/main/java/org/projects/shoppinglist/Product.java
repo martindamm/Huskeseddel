@@ -3,9 +3,6 @@ package org.projects.shoppinglist;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Kristoffer on 05-05-2016.
- */
 public class Product implements Parcelable {
 
     private String name;
@@ -33,13 +30,10 @@ public class Product implements Parcelable {
         dest.writeInt(quantity);
     }
 
-
-
     public Product(Parcel in) {
         name = in.readString();
         quantity = in.readInt();
     }
-
 
     public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
 
@@ -55,9 +49,8 @@ public class Product implements Parcelable {
 
     };
     public Product()
-    {
+    {    }
 
-    }
     public String getName()
     {
         return name;
@@ -65,7 +58,6 @@ public class Product implements Parcelable {
 
     public void setName(String name)
     {
-
         this.name =name;
     }
     //
@@ -76,9 +68,6 @@ public class Product implements Parcelable {
 
     public void setQuantity(int quantity)
     {
-
         this.quantity =quantity;
     }
-
-
 }
